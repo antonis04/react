@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       defer
       src="https://unpkg.com/react@17/umd/react.development.js"
@@ -18,20 +18,36 @@
       src="https://unpkg.com/babel-standalone@6/babel.min.js"
     ></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="root"></div>
     <script type="text/babel">
 
-        const Hello = ({ name }) => {
-            return (
-            <h1>Hello, {name}!</h1>
-    )
-    }
-    const element = <Hello name="Antek" />;
-    ReactDOM.render(element, document.getElementById('root'));
+      const ProductList = ({products}) => (
 
+      <React.Fragment>
+        <h1>Lista produktów</h1>
+        <ul>
+          {products.map(product => (
+            <li key={product.id}>{product.name}</li>
+          ))}
+        </ul>
+      </React.Fragment>
+      )   
+
+      const products = [
+        { id: 4, name: "gumka" },
+        { id: 6, name: "głośniki" },
+      ];
+  
+
+      const element = (
+          <ProductList 
+          products={products}
+          />
+
+      );
+      ReactDOM.render(element, document.getElementById("root"));
     </script>
-    </div>
-</body>
+  </body>
 </html>
